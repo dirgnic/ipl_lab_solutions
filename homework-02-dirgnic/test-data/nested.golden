@@ -1,0 +1,7 @@
+; ModuleID = 'nested'
+source_filename = "nested.ae"
+
+define i64 @myMain() {
+myEntrypoint:
+  ret i64 4
+}
