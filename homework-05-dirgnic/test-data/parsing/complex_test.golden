@@ -1,0 +1,2 @@
+Seq [Let "x" (Num 5) (Res (Num 0)), Let "y" (Num 10) (Res (Num 0))] 
+(Ite (Sma (Add (Var "x") (Var "y")) (Num 15)) (Res (Num 1)) (Res (Num 0)))

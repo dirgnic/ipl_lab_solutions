@@ -1,0 +1,1 @@
+Seq [Let "x" (Num 10) (Res (Num 0)),Let "y" (Num 20) (Res (Num 0))] (Res (Add (Var "x") (Var "y")))

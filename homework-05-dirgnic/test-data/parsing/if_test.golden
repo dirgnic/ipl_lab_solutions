@@ -1,0 +1,1 @@
+Seq [Let "x" (Num 0) (Res (Num 0))] (Ite (Sma (Var "x") (Num 0)) (Res (Num 1)) (Res (Num 2)))

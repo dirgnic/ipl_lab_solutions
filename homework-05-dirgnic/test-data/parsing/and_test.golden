@@ -1,0 +1,1 @@
+Seq [Let "x" (Boo True) (Res (Num 0)),Let "y" (Boo False) (Res (Num 0))] (Res (And (Var "x") (Var "y")))
