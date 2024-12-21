@@ -1,0 +1,11 @@
+; ModuleID = 'comparison'
+source_filename = "comparison.program"
+
+declare ptr @malloc(i64)
+
+define i64 @myMain() {
+entrypoint:
+  %y = icmp ult i64 15, 15
+  %z = and i1 %y, true
+  ret i1 %z
+}

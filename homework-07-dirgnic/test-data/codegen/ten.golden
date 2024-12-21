@@ -1,0 +1,9 @@
+; ModuleID = 'ten'
+source_filename = "ten.program"
+
+declare ptr @malloc(i64)
+
+define i64 @myMain() {
+entrypoint:
+  ret i64 10
+}

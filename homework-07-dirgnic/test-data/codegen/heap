@@ -1,0 +1,12 @@
+; ModuleID = 'heap'
+source_filename = "heap.program"
+
+declare ptr @malloc(i64)
+
+define i64 @myMain() {
+entrypoint:
+  %r = call ptr @malloc(i64 1)
+  store i64 9, ptr %r, align 4
+  %z = load i64, ptr %r, align 4
+  ret i64 %z
+}

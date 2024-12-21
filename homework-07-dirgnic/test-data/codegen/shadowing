@@ -1,0 +1,9 @@
+; ModuleID = 'shadowing'
+source_filename = "shadowing.program"
+
+declare ptr @malloc(i64)
+
+define i64 @myMain() {
+entrypoint:
+  ret i64 300
+}

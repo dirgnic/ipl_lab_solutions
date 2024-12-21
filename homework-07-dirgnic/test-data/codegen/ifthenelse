@@ -1,0 +1,23 @@
+; ModuleID = 'ifthenelse'
+source_filename = "ifthenelse.program"
+
+declare ptr @malloc(i64)
+
+define i64 @myMain() {
+entrypoint:
+  %b = icmp ult i64 5, 7
+  %r = alloca i64, align 8
+  br i1 %b, label %l0, label %l1
+
+l0:                                               ; preds = %entrypoint
+  store i64 17, ptr %r, align 4
+  br label %l2
+
+l1:                                               ; preds = %entrypoint
+  store i64 100, ptr %r, align 4
+  br label %l2
+
+l2:                                               ; preds = %l1, %l0
+  %a = load i64, ptr %r, align 4
+  ret i64 %a
+}

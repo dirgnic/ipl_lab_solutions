@@ -1,0 +1,59 @@
+name:                pli-hw07
+version:             0.1.0.0
+synopsis:            Homework 07 for PLI.
+
+license:             BSD3
+author:              Philipp Schuster
+maintainer:          philipp.schuster@uni-tuebingen.de
+
+category:            Language
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  test-data/codegen/*.golden
+
+library
+  exposed-modules:     Syntax,
+                       IntermediateRepresentation,
+                       Parsing,
+                       TypeChecking,
+                       Lowering,
+                       CodeGeneration
+  build-depends:       base ==4.18.*,
+                       llvm-hs-pure ==15.0.*,
+                       llvm-hs ==15.0.*,
+                       transformers ==0.6.*,
+                       megaparsec ==9.5.*,
+                       parser-combinators ==1.3.*
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+
+executable pli-hw07
+  main-is:             Main.hs
+  build-depends:       pli-hw07,
+                       base ==4.18.*,
+                       llvm-hs-pure ==15.0.*,
+                       llvm-hs ==15.0.*
+  hs-source-dirs:      app
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+
+test-suite test
+  type:                exitcode-stdio-1.0
+  main-is:             Main.hs
+  other-modules:       ParsingTests,
+                       TypeCheckingTests,
+                       LoweringTests,
+                       CodeGenerationTests
+  build-depends:       pli-hw07,
+                       base ==4.18.*,
+                       llvm-hs-pure ==15.0.*,
+                       llvm-hs ==15.0.*,
+                       tasty ==1.4.*,
+                       tasty-hunit ==0.10.*,
+                       tasty-golden ==2.3.*
+  hs-source-dirs:      tst
+  default-language:    Haskell2010
+  ghc-options:         -Wall
