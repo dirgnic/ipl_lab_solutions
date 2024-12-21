@@ -1,0 +1,7 @@
+; ModuleID = 'ten'
+source_filename = "ten.program"
+
+define i64 @myMain() {
+entrypoint:
+  ret i64 10
+}
