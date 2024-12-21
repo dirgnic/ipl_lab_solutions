@@ -1,0 +1,9 @@
+resolver: lts-22.38
+
+extra-deps:
+  - github: llvm-hs/llvm-hs
+    commit: 5bca2c1a2a3aa98ecfb19181e7a5ebbf3e212b76
+    subdirs:
+      - llvm-hs
+      - llvm-hs-pure
+

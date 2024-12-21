@@ -1,0 +1,42 @@
+name:                pli-hw03
+version:             0.1.0.0
+synopsis:            Homework 3 for Programming Languages Implementation
+category:            Education
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     
+      Syntax
+      TypeChecking
+      Lowering
+      IntermediateRepresentation
+      CodeGeneration
+  build-depends:       
+      base >=4.14 && <5,
+      containers,
+      transformers,
+      tasty >=1.4 && <1.5,
+      tasty-hunit >=0.10 && <0.11,
+      tasty-golden >=2.3 && <2.4,
+      llvm-hs-pure,
+      llvm-hs,
+      bytestring
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable pli-hw03
+  main-is:             Main.hs
+  build-depends:       
+      base >=4.14 && <5,
+      pli-hw03,
+      containers,
+      transformers,
+      tasty >=1.4 && <1.5,
+      tasty-hunit >=0.10 && <0.11,
+      tasty-golden >=2.3 && <2.4,
+      llvm-hs-pure,
+      llvm-hs,
+      bytestring
+  hs-source-dirs:      app
+  default-language:    Haskell2010
