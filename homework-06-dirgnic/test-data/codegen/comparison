@@ -1,0 +1,23 @@
+; ModuleID = 'comparison'
+source_filename = "comparison.program"
+
+define i64 @myMain() {
+entrypoint:
+  br label %l2
+
+l4:                                               ; preds = %l2
+  %x3 = phi i64 [ 8, %l2 ]
+  br label %l0
+
+l2:                                               ; preds = %entrypoint
+  %x1 = phi i64 [ 15, %entrypoint ]
+  br label %l4
+
+l0:                                               ; preds = %l4
+  %x5 = icmp ult i64 %x1, %x3
+  br label %return
+
+return:                                           ; preds = %l0
+  %result = phi i64 [ %x5, %l0 ]
+  ret i64 %result
+}

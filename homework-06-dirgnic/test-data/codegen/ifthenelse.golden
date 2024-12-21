@@ -1,0 +1,29 @@
+; ModuleID = 'ifthenelse'
+source_filename = "ifthenelse.program"
+
+define i64 @myMain() {
+entrypoint:
+  br label %l4
+
+l6:                                               ; preds = %l4
+  %x5 = phi i64 [ 8, %l4 ]
+  br label %l2
+
+l4:                                               ; preds = %entrypoint
+  %x3 = phi i64 [ 7, %entrypoint ]
+  br label %l6
+
+l2:                                               ; preds = %l6
+  %x7 = icmp ult i64 %x3, %x5
+  br i1 %x7, label %l0, label %l1
+
+l0:                                               ; preds = %l2
+  br label %return
+
+l1:                                               ; preds = %l2
+  br label %return
+
+return:                                           ; preds = %l1, %l0
+  %result = phi i64 [ 1, %l0 ], [ 2, %l1 ]
+  ret i64 %result
+}

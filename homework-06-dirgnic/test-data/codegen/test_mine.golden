@@ -1,0 +1,5 @@
+testProgram1 = [
+  Fun "add" [("x", TypeInt), ("y", TypeInt)] TypeInt (Add (Var "x") (Var "y")),
+  Fun "main" [] TypeInt (App "add" [Num 2, Num 3])
+]
+-- Expected: Nothing (No errors)

@@ -1,0 +1,28 @@
+; ModuleID = 'function'
+source_filename = "function.program"
+
+define i64 @myMain() {
+entrypoint:
+  br label %l2
+
+l2:                                               ; preds = %entrypoint
+  %x1 = phi i64 [ 10, %entrypoint ]
+  br label %l0
+
+l0:                                               ; preds = %l2
+  %x3 = call i64 @f(i64 %x1)
+  br label %return
+
+return:                                           ; preds = %l0
+  %result = phi i64 [ %x3, %l0 ]
+  ret i64 %result
+}
+
+define i64 @f(i64 %x) {
+entrypoint:
+  br label %return
+
+return:                                           ; preds = %entrypoint
+  %result = phi i64 [ %x, %entrypoint ]
+  ret i64 %result
+}

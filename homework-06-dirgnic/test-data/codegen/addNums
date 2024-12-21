@@ -1,0 +1,78 @@
+; ModuleID = 'addNums'
+source_filename = "addNums.program"
+
+define i64 @myMain() {
+entrypoint:
+  br label %l2
+
+l2:                                               ; preds = %entrypoint
+  %x1 = phi i64 [ 10, %entrypoint ]
+  br label %l0
+
+l0:                                               ; preds = %l2
+  %x3 = call i64 @addNums(i64 %x1)
+  br label %return
+
+return:                                           ; preds = %l0
+  %result = phi i64 [ %x3, %l0 ]
+  ret i64 %result
+}
+
+define i64 @addNums(i64 %x) {
+entrypoint:
+  br label %l4
+
+l6:                                               ; preds = %l4
+  %x5 = phi i64 [ 1, %l4 ]
+  br label %l2
+
+l4:                                               ; preds = %entrypoint
+  %x3 = phi i64 [ %x, %entrypoint ]
+  br label %l6
+
+l2:                                               ; preds = %l6
+  %x7 = icmp ult i64 %x3, %x5
+  br i1 %x7, label %l0, label %l1
+
+l12:                                              ; preds = %l13
+  %x11 = phi i64 [ %x22, %l13 ]
+  br label %l8
+
+l15:                                              ; preds = %l16
+  %x14 = phi i64 [ %x21, %l16 ]
+  br label %l13
+
+l20:                                              ; preds = %l18
+  %x19 = phi i64 [ 1, %l18 ]
+  br label %l16
+
+l18:                                              ; preds = %l10
+  %x17 = phi i64 [ %x, %l10 ]
+  br label %l20
+
+l16:                                              ; preds = %l20
+  %x21 = sub i64 %x17, %x19
+  br label %l15
+
+l13:                                              ; preds = %l15
+  %x22 = call i64 @addNums(i64 %x14)
+  br label %l12
+
+l10:                                              ; preds = %l1
+  %x9 = phi i64 [ %x, %l1 ]
+  br label %l18
+
+l8:                                               ; preds = %l12
+  %x23 = add i64 %x9, %x11
+  br label %return
+
+l0:                                               ; preds = %l2
+  br label %return
+
+l1:                                               ; preds = %l2
+  br label %l10
+
+return:                                           ; preds = %l0, %l8
+  %result = phi i64 [ %x23, %l8 ], [ 0, %l0 ]
+  ret i64 %result
+}

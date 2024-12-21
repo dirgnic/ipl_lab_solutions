@@ -1,0 +1,11 @@
+; ModuleID = 'ten'
+source_filename = "ten.program"
+
+define i64 @myMain() {
+entrypoint:
+  br label %return
+
+return:                                           ; preds = %entrypoint
+  %result = phi i64 [ 10, %entrypoint ]
+  ret i64 %result
+}
